@@ -6,6 +6,12 @@
     "browser": true
   },
   // "globals": {
+  //   "browser": true,
+  //   "fetch": true,
+  //   "serviceworker": true,
+  //   "describe": true,
+  //   "it": true,
+  //   "expect": true,
   //   "document": true
   // },
   "rules": {
@@ -15,5 +21,12 @@
         "extensions": [".js"]
       }
     ]
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["src"]
+      }
+    }
   }
 }
