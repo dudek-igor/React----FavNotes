@@ -13,7 +13,7 @@ const Button = styled.button`
   ${({ secendary }) =>
     secendary &&
     css`
-      background-color: 'hsl(0, 0%, 90%)';
+      background-color: hsl(0, 0%, 90%);
       width: 105px;
       height: 30px;
       font-size: 10px;
