@@ -8,7 +8,7 @@ import styled from 'styled-components';
 import ButtonIcon from './ButtonIcon';
 
 export default {
-  title: 'ButtonIcon',
+  title: 'Atoms/ButtonIcon',
   component: ButtonIcon,
   decorators: [(storyFn) => <YellowBackground>{storyFn()}</YellowBackground>],
 };
