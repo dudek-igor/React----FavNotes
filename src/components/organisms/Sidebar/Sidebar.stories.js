@@ -9,5 +9,5 @@ export default {
 };
 
 export const PrimarySidebar = () => <Sidebar />;
-export const SecondarySidebar = () => <Sidebar sidebarType="twitter" />;
-export const TertiarySidebar = () => <Sidebar sidebarType="article" />;
+export const SecondarySidebar = () => <Sidebar pageType="twitter" />;
+export const TertiarySidebar = () => <Sidebar pageType="article" />;

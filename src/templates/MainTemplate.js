@@ -7,12 +7,10 @@ import { theme } from 'theme/mainTheme';
 
 const MainTemplate = ({ children }) => {
   return (
-    <ThemeProvider theme={theme}>
-      <>
-        <GlobalStyle />
-        {children}
-      </>
-    </ThemeProvider>
+    <>
+      <GlobalStyle />
+      <ThemeProvider theme={theme}>{children}</ThemeProvider>
+    </>
   );
 };
 MainTemplate.propTypes = {

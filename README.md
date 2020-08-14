@@ -1,6 +1,8 @@
-# Hello
+## Hello :wave:
 
-## Was Used
+---
+
+### Was Used :computer:
 
 - eslint
 - prettier
@@ -10,4 +12,4 @@
 - react-router-dom
 - redux
 
-### The atomic design methodology was used
+### :atom: The atomic design methodology was used

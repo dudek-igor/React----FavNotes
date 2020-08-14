@@ -10,9 +10,12 @@ import twitterIcon from 'assets/icons/twitter.svg';
 import logoIcon from 'assets/icons/logo.svg';
 
 const SidebarWrapper = styled.div`
-  width: 163px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 150px;
   height: 100vh;
-  background-color: ${({ theme, sidebarType }) => theme[sidebarType]};
+  background-color: ${({ theme, pageType }) => theme[pageType]};
   display: grid;
   grid-template-rows: 1.5fr 4fr 1fr;
 `;
@@ -27,8 +30,8 @@ const InnerWrapper = styled.div`
     css`
       justify-content: center;
     `}
-  ${({ end }) =>
-    end &&
+  ${({ flexEnd }) =>
+    flexEnd &&
     css`
       justify-content: flex-end;
     `}
@@ -45,29 +48,29 @@ const StyledLogoLink = styled(NavLink)`
   border: none;
 `;
 
-const Sidebar = ({ sidebarType }) => {
+const Sidebar = ({ pageType }) => {
   return (
-    <SidebarWrapper sidebarType={sidebarType}>
+    <SidebarWrapper pageType={pageType}>
       <InnerWrapper center>
-        <StyledLogoLink exact to="/" />
+        <StyledLogoLink as={Link} to="/" />
       </InnerWrapper>
       <InnerWrapper>
-        <ButtonIcon exact as={NavLink} to="/" icon={penIcon} />
+        <ButtonIcon as={NavLink} to="/notes" exact icon={penIcon} />
         <ButtonIcon as={NavLink} to="/twitters" icon={twitterIcon} />
         <ButtonIcon as={NavLink} to="/articles" icon={bulbIcon} />
       </InnerWrapper>
-      <InnerWrapper end>
-        <ButtonIcon exact as={Link} to="/" icon={logoutIcon} />
+      <InnerWrapper flexEnd>
+        <ButtonIcon as={Link} to="/" icon={logoutIcon} />
       </InnerWrapper>
     </SidebarWrapper>
   );
 };
 
 Sidebar.propTypes = {
-  sidebarType: PropTypes.oneOf(['note', 'twitter', 'article']),
+  pageType: PropTypes.oneOf(['note', 'twitter', 'article']),
 };
 Sidebar.defaultProps = {
-  sidebarType: 'note',
+  pageType: 'note',
 };
 
 export default Sidebar;

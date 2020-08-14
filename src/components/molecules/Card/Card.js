@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
@@ -54,27 +55,21 @@ const StyledLinkButton = styled.a`
   background-position: 50%;
   background-repeat: no-repeat;
   position: absolute;
-  right: 25px;
+  right: 10px;
   top: 50%;
   transform: translateY(-50%);
 `;
 
-const Card = ({ cardType }) => (
+const Card = ({ cardType, title, created, twitterName, articleUrl, content }) => (
   <StyledWrapper>
     <InnerWrapper cardType={cardType}>
-      <StyleHeading>Hello Igor</StyleHeading>
-      <DateInfo>3 days ago</DateInfo>
-      {cardType === 'twitter' && (
-        <StyledAvatar src="https://api.adorable.io/avatars/86/abott@adorable.png" />
-      )}
-      {cardType === 'article' && <StyledLinkButton href="/" />}
+      <StyleHeading>{title}</StyleHeading>
+      <DateInfo>{created}</DateInfo>
+      {cardType === 'twitter' && <StyledAvatar src={`https://avatars.io/twitter/${twitterName}`} />}
+      {cardType === 'article' && <StyledLinkButton href={articleUrl} />}
     </InnerWrapper>
     <InnerWrapper flex>
-      <Paragraph>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum porro, ut eum labore
-        incidunt soluta maxime! Quidem distinctio, aut, beatae laudantium officiis nulla
-        repellendus, quos sit deserunt quas ullam quibusdam?
-      </Paragraph>
+      <Paragraph>{content}</Paragraph>
       <Button secendary>Remove</Button>
     </InnerWrapper>
   </StyledWrapper>
@@ -82,6 +77,11 @@ const Card = ({ cardType }) => (
 
 Card.propTypes = {
   cardType: PropTypes.oneOf(['note', 'twitter', 'article']),
+  title: PropTypes.string.isRequired,
+  created: PropTypes.string.isRequired,
+  twitterName: PropTypes.string,
+  articleUrl: PropTypes.string,
+  content: PropTypes.string.isRequired,
 };
 Card.defaultProps = {
   cardType: 'note',
