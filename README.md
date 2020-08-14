@@ -2,7 +2,7 @@
 
 ---
 
-### Was Used :computer:
+### :computer: Was Used
 
 - eslint
 - prettier

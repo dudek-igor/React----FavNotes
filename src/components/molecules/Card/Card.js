@@ -65,8 +65,10 @@ const Card = ({ cardType, title, created, twitterName, articleUrl, content }) =>
     <InnerWrapper cardType={cardType}>
       <StyleHeading>{title}</StyleHeading>
       <DateInfo>{created}</DateInfo>
-      {cardType === 'twitter' && <StyledAvatar src={`https://avatars.io/twitter/${twitterName}`} />}
-      {cardType === 'article' && <StyledLinkButton href={articleUrl} />}
+      {cardType === 'twitters' && (
+        <StyledAvatar src={`https://avatars.io/twitter/${twitterName}`} />
+      )}
+      {cardType === 'articles' && <StyledLinkButton href={articleUrl} />}
     </InnerWrapper>
     <InnerWrapper flex>
       <Paragraph>{content}</Paragraph>
@@ -76,7 +78,7 @@ const Card = ({ cardType, title, created, twitterName, articleUrl, content }) =>
 );
 
 Card.propTypes = {
-  cardType: PropTypes.oneOf(['note', 'twitter', 'article']),
+  cardType: PropTypes.oneOf(['notes', 'twitters', 'articles']),
   title: PropTypes.string.isRequired,
   created: PropTypes.string.isRequired,
   twitterName: PropTypes.string,
