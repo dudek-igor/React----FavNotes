@@ -93,7 +93,7 @@ Card.propTypes = {
   id: PropTypes.number.isRequired,
 };
 Card.defaultProps = {
-  cardType: 'note',
+  cardType: 'notes',
   twitterName: 'unknown',
   articleUrl: '/',
 };

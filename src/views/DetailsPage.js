@@ -19,7 +19,7 @@ const DetailsPage = ({ match, title, content, articleUrl, twitterName, created, 
       default:
         break;
     }
-  });
+  }, [match]);
   return (
     <DetailsTemplate
       pageType={pageType}

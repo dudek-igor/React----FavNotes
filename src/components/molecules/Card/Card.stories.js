@@ -7,5 +7,5 @@ export default {
 };
 
 export const PrimaryCard = () => <Card />;
-export const SecondaryCard = () => <Card cardType="twitter" />;
-export const TertiaryCard = () => <Card cardType="article" />;
+export const SecondaryCard = () => <Card cardType="twitters" />;
+export const TertiaryCard = () => <Card cardType="articles" />;

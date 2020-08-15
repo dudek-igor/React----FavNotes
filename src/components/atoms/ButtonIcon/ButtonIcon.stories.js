@@ -19,7 +19,7 @@ const YellowBackground = styled.div`
   align-items: center;
   width: 300px;
   height: 300px;
-  background: ${({ theme }) => theme.note};
+  background: ${({ theme }) => theme.notes};
 `;
 
 export const Bulb = () => <ButtonIcon active icon={bulbIcon} />;
