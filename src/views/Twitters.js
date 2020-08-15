@@ -48,6 +48,7 @@ const Twitter = () => {
           twitterName={twitterName}
           created={created}
           key={id}
+          id={id}
         />
       ))}
     </GridViewTemplate>

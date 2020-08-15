@@ -55,7 +55,7 @@ const Sidebar = ({ pageType }) => {
         <StyledLogoLink as={Link} to="/" />
       </InnerWrapper>
       <InnerWrapper>
-        <ButtonIcon as={NavLink} to="/notes" exact icon={penIcon} />
+        <ButtonIcon as={NavLink} to="/notes" icon={penIcon} />
         <ButtonIcon as={NavLink} to="/twitters" icon={twitterIcon} />
         <ButtonIcon as={NavLink} to="/articles" icon={bulbIcon} />
       </InnerWrapper>

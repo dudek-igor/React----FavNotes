@@ -4,7 +4,7 @@ const Button = styled.button`
   border: none;
   width: 220px;
   height: 47px;
-  background-color: ${({ color }) => color || 'hsl(49, 100%, 58%)'};
+  background-color: ${({ theme, pageType }) => theme[pageType]};
   border-radius: 50px;
   font-weight: ${({ theme }) => theme.bold};
   font-size: 16px;

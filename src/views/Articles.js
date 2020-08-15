@@ -48,6 +48,7 @@ const Articles = () => {
           articleUrl={articleUrl}
           created={created}
           key={id}
+          id={id}
         />
       ))}
     </GridViewTemplate>
