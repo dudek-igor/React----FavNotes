@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
@@ -6,6 +7,8 @@ import Paragraph from 'components/atoms/Paragraph/Paragraph';
 import Heading from 'components/atoms/Heading/Heading';
 import Button from 'components/atoms/Button/Button';
 import LinkIcon from 'assets/icons/link.svg';
+import { connect } from 'react-redux';
+import { removeItem } from 'data/actions';
 
 const StyledWrapper = styled.div`
   min-height: 380px;
@@ -15,7 +18,6 @@ const StyledWrapper = styled.div`
   display: grid;
   grid-template-rows: 1fr 4fr;
 `;
-
 const InnerWrapper = styled.div`
   position: relative;
   padding: 17px 30px;
@@ -60,7 +62,7 @@ const StyledLinkButton = styled.a`
   transform: translateY(-50%);
 `;
 
-const Card = ({ cardType, title, created, twitterName, articleUrl, content, id }) => {
+const Card = ({ cardType, title, created, twitterName, articleUrl, content, id, removeItem }) => {
   const [redirected, setRedirected] = useState(false);
   if (redirected === true) {
     return <Redirect to={`${cardType}/${id}`} />;
@@ -77,7 +79,15 @@ const Card = ({ cardType, title, created, twitterName, articleUrl, content, id }
       </InnerWrapper>
       <InnerWrapper flex>
         <Paragraph>{content}</Paragraph>
-        <Button secendary>Remove</Button>
+        <Button
+          secendary
+          onClick={(e) => {
+            e.stopPropagation();
+            removeItem(cardType, id);
+          }}
+        >
+          Remove
+        </Button>
       </InnerWrapper>
     </StyledWrapper>
   );
@@ -91,6 +101,7 @@ Card.propTypes = {
   articleUrl: PropTypes.string,
   content: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
+  removeItem: PropTypes.func.isRequired,
 };
 Card.defaultProps = {
   cardType: 'notes',
@@ -98,4 +109,8 @@ Card.defaultProps = {
   articleUrl: '/',
 };
 
-export default Card;
+const mapDispatchToProps = {
+  removeItem,
+};
+
+export default connect(null, mapDispatchToProps)(Card);

@@ -5,6 +5,7 @@ import UserPageTemplate from 'templates/UserPageTemplate';
 import Input from 'components/atoms/Input/Input';
 import Heading from 'components/atoms/Heading/Heading';
 import Paragraph from 'components/atoms/Paragraph/Paragraph';
+import { withContext } from 'hoc/withContext';
 
 const StyledWrapper = styled.div`
   padding: 25px 70px 25px 70px;
@@ -13,6 +14,14 @@ const StyledGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 45px;
+  @media (max-width: 1100px) {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+  }
+  @media (max-width: 800px) {
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 0;
+  }
 `;
 const StyledPageHeader = styled.div`
   margin: 25px 0 25px 0;
@@ -28,16 +37,16 @@ const StyledParagraph = styled(Paragraph)`
   margin: 10px 0 0 0;
 `;
 
-const GridViewTemplate = ({ children, pageType }) => {
+const GridViewTemplate = ({ children, pageContext }) => {
   return (
-    <UserPageTemplate pageType={pageType}>
+    <UserPageTemplate>
       <StyledWrapper>
         <StyledPageHeader>
           <StyledHeading big as="h1">
-            {pageType}
+            {pageContext}
           </StyledHeading>
           <Input search placeholder="Search" />
-          <StyledParagraph>6 {pageType}</StyledParagraph>
+          <StyledParagraph>6 {pageContext}</StyledParagraph>
         </StyledPageHeader>
         <StyledGrid>{children}</StyledGrid>
       </StyledWrapper>
@@ -45,11 +54,11 @@ const GridViewTemplate = ({ children, pageType }) => {
   );
 };
 GridViewTemplate.propTypes = {
-  pageType: PropTypes.oneOf(['notes', 'twitters', 'articles']),
+  pageContext: PropTypes.oneOf(['notes', 'twitters', 'articles']),
   children: PropTypes.node.isRequired,
 };
 GridViewTemplate.defaultProps = {
-  pageType: 'notes',
+  pageContext: 'notes',
 };
 
-export default GridViewTemplate;
+export default withContext(GridViewTemplate);

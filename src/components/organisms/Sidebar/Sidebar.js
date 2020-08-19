@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { NavLink, Link } from 'react-router-dom';
 import ButtonIcon from 'components/atoms/ButtonIcon/ButtonIcon';
@@ -8,17 +7,18 @@ import logoutIcon from 'assets/icons/logout.svg';
 import penIcon from 'assets/icons/pen.svg';
 import twitterIcon from 'assets/icons/twitter.svg';
 import logoIcon from 'assets/icons/logo.svg';
+import { withContext } from 'hoc/withContext';
 
-const SidebarWrapper = styled.div`
+const SidebarWrapper = withContext(styled.div`
   position: fixed;
   top: 0;
   left: 0;
   width: 150px;
   height: 100vh;
-  background-color: ${({ theme, pageType }) => theme[pageType]};
+  background-color: ${({ theme, pageContext }) => theme[pageContext]};
   display: grid;
   grid-template-rows: 1.5fr 4fr 1fr;
-`;
+`);
 
 const InnerWrapper = styled.div`
   display: flex;
@@ -48,9 +48,9 @@ const StyledLogoLink = styled(NavLink)`
   border: none;
 `;
 
-const Sidebar = ({ pageType }) => {
+const Sidebar = () => {
   return (
-    <SidebarWrapper pageType={pageType}>
+    <SidebarWrapper>
       <InnerWrapper center>
         <StyledLogoLink as={Link} to="/" />
       </InnerWrapper>
@@ -64,13 +64,6 @@ const Sidebar = ({ pageType }) => {
       </InnerWrapper>
     </SidebarWrapper>
   );
-};
-
-Sidebar.propTypes = {
-  pageType: PropTypes.oneOf(['notes', 'twitters', 'articles']),
-};
-Sidebar.defaultProps = {
-  pageType: 'notes',
 };
 
 export default Sidebar;

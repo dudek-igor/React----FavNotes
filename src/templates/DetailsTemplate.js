@@ -6,6 +6,7 @@ import UserPageTemplate from 'templates/UserPageTemplate';
 import Button from 'components/atoms/Button/Button';
 import Heading from 'components/atoms/Heading/Heading';
 import Paragraph from 'components/atoms/Paragraph/Paragraph';
+import { withContext } from 'hoc/withContext';
 
 const StyledWrapper = styled.div`
   padding: 50px 0 0 100px;
@@ -49,24 +50,21 @@ const StyledLink = styled(Link)`
   color: black;
 `;
 
-const DetailsTemplate = ({ pageType, title, created, content, articleUrl, twitterName }) => {
+const DetailsTemplate = ({ pageContext, title, created, content, articleUrl, twitterName }) => {
   return (
-    <UserPageTemplate pageType={pageType}>
+    <UserPageTemplate>
       <StyledWrapper>
         <StyledInnerWrapper>
-          <Heading big>{title || 'header'}</Heading>
-          {pageType === 'twitters' && (
+          <Heading big>{title}</Heading>
+          {pageContext === 'twitters' && (
             <StyledAvatar src={`https://avatars.io/twitter/${twitterName}`} />
           )}
-          {pageType === 'articles' && <Link href={articleUrl} />}
+          {pageContext === 'articles' && <Link href={articleUrl} />}
         </StyledInnerWrapper>
-        <StyledParagraph bold>CREATED - {created || `00-00-0000`}</StyledParagraph>
-        <StyledParagraph>
-          {content ||
-            `Lorem, ipsum dolor sit amet consectetur adipisicing elit. Impedit commodi officia consequuntur omnis alias debitis rerum placeat qui optio incidunt, eveniet sit? Culpa adipisci fuga aperiam eum at, sapiente ab!`}
-        </StyledParagraph>
-        <StyledButton pageType={pageType}>
-          <StyledLink to={`/${pageType}`}>Close / Save</StyledLink>
+        <StyledParagraph bold>CREATED - {created}</StyledParagraph>
+        <StyledParagraph>{content}</StyledParagraph>
+        <StyledButton>
+          <StyledLink to={`/${pageContext}`}>Close / Save</StyledLink>
         </StyledButton>
       </StyledWrapper>
     </UserPageTemplate>
@@ -74,7 +72,7 @@ const DetailsTemplate = ({ pageType, title, created, content, articleUrl, twitte
 };
 
 DetailsTemplate.propTypes = {
-  pageType: PropTypes.oneOf(['notes', 'twitters', 'articles']),
+  pageContext: PropTypes.oneOf(['notes', 'twitters', 'articles']),
   title: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
   created: PropTypes.string.isRequired,
@@ -82,9 +80,9 @@ DetailsTemplate.propTypes = {
   twitterName: PropTypes.string,
 };
 DetailsTemplate.defaultProps = {
-  pageType: 'notes',
+  pageContext: 'notes',
   articleUrl: '',
   twitterName: '',
 };
 
-export default DetailsTemplate;
+export default withContext(DetailsTemplate);
