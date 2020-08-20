@@ -9,19 +9,21 @@ import Button from 'components/atoms/Button/Button';
 import LinkIcon from 'assets/icons/link.svg';
 import { connect } from 'react-redux';
 import { removeItem } from 'data/actions';
+import { withContext } from 'hoc/withContext';
 
 const StyledWrapper = styled.div`
   min-height: 380px;
-  box-shadow: 0 10px 30px -10px hsla(0, 0%, 0%, 0.1);
+  box-shadow: 0 10px 30px -10px hsla(0, 0%, 0%, 0.9);
+  margin: 10px 0;
   border-radius: 10px;
   overflow: hidden;
   display: grid;
   grid-template-rows: 1fr 4fr;
 `;
-const InnerWrapper = styled.div`
+const InnerWrapper = withContext(styled.div`
   position: relative;
   padding: 17px 30px;
-  background-color: ${({ theme, cardType }) => theme[cardType]};
+  background-color: ${({ theme, pageContext }) => theme[pageContext]};
   ${({ flex }) =>
     flex &&
     css`
@@ -29,7 +31,7 @@ const InnerWrapper = styled.div`
       flex-direction: column;
       justify-content: space-between;
     `}
-`;
+`);
 const DateInfo = styled.div`
   margin: 0 0 10px;
   font-weight: ${({ theme }) => theme.bold};
@@ -62,20 +64,29 @@ const StyledLinkButton = styled.a`
   transform: translateY(-50%);
 `;
 
-const Card = ({ cardType, title, created, twitterName, articleUrl, content, id, removeItem }) => {
+const Card = ({
+  pageContext,
+  title,
+  created,
+  twitterName,
+  articleUrl,
+  content,
+  id,
+  removeItem,
+}) => {
   const [redirected, setRedirected] = useState(false);
   if (redirected === true) {
-    return <Redirect to={`${cardType}/${id}`} />;
+    return <Redirect to={`${pageContext}/${id}`} />;
   }
   return (
     <StyledWrapper onClick={() => setRedirected(true)}>
-      <InnerWrapper cardType={cardType}>
+      <InnerWrapper>
         <StyleHeading>{title}</StyleHeading>
-        <DateInfo>{created}</DateInfo>
-        {cardType === 'twitters' && (
+        <DateInfo>Created - {created}</DateInfo>
+        {pageContext === 'twitters' && (
           <StyledAvatar src={`https://avatars.io/twitter/${twitterName}`} />
         )}
-        {cardType === 'articles' && <StyledLinkButton href={articleUrl} />}
+        {pageContext === 'articles' && <StyledLinkButton href={articleUrl} />}
       </InnerWrapper>
       <InnerWrapper flex>
         <Paragraph>{content}</Paragraph>
@@ -83,7 +94,7 @@ const Card = ({ cardType, title, created, twitterName, articleUrl, content, id, 
           secendary
           onClick={(e) => {
             e.stopPropagation();
-            removeItem(cardType, id);
+            removeItem(pageContext, id);
           }}
         >
           Remove
@@ -94,17 +105,17 @@ const Card = ({ cardType, title, created, twitterName, articleUrl, content, id, 
 };
 
 Card.propTypes = {
-  cardType: PropTypes.oneOf(['notes', 'twitters', 'articles']),
+  pageContext: PropTypes.oneOf(['notes', 'twitters', 'articles']),
   title: PropTypes.string.isRequired,
   created: PropTypes.string.isRequired,
   twitterName: PropTypes.string,
   articleUrl: PropTypes.string,
   content: PropTypes.string.isRequired,
-  id: PropTypes.number.isRequired,
+  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   removeItem: PropTypes.func.isRequired,
 };
 Card.defaultProps = {
-  cardType: 'notes',
+  pageContext: 'notes',
   twitterName: 'unknown',
   articleUrl: '/',
 };
@@ -113,4 +124,4 @@ const mapDispatchToProps = {
   removeItem,
 };
 
-export default connect(null, mapDispatchToProps)(Card);
+export default connect(null, mapDispatchToProps)(withContext(Card));
