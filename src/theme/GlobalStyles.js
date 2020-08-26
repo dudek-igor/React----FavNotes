@@ -14,7 +14,6 @@ const GlobalStyle = createGlobalStyle`
     font-size: 62.5%; // 1 rem === 10px
   }
   body{
-    padding-left: 150px;
     font-size: 1.6rem; // happy rem :)
     font-family: "Montserrat", sans-serif
   }

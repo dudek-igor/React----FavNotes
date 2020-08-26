@@ -1,26 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import DetailsTemplate from 'templates/DetailsTemplate';
+import { withContext } from 'hoc/withContext';
+import { connect } from 'react-redux';
 
-const DetailsPage = ({ id }) => {
+const DetailsPage = ({ activeItem }) => {
+  const [item] = activeItem;
   return (
     <DetailsTemplate
-      title="header"
-      content="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Impedit commodi officia consequuntur omnis alias debitis rerum placeat qui optio incidunt, eveniet sit? Culpa adipisci fuga aperiam eum at, sapiente ab!"
+      title={item.title}
+      content={item.content}
       articleUrl="/"
       twitterName="/"
-      created="00-00-0000"
-      key={id}
-      id={id}
+      created={item.created}
+      key={item.id}
+      id={item.id}
     />
   );
 };
 
 DetailsPage.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
-  id: PropTypes.number,
+  activeItem: PropTypes.array.isRequired,
 };
-DetailsPage.defaultProps = {
-  id: 1,
-};
-export default DetailsPage;
+
+const mapStateToProps = (state, ownProps) => ({
+  // eslint-disable-next-line no-underscore-dangle
+  activeItem: state[ownProps.pageContext].filter((item) => item._id === ownProps.match.params.id),
+});
+export default withContext(connect(mapStateToProps)(DetailsPage));

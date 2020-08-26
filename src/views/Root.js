@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import MainTemplate from 'templates/MainTemplate';
+import LoginPage from 'views/LoginPage';
 import Notes from 'views/Notes';
 import Twiiters from 'views/Twitters';
 import Article from 'views/Articles';
@@ -16,6 +17,7 @@ function Root() {
       <Router>
         <MainTemplate>
           <Switch>
+            <Route path={routes.login} component={LoginPage} />
             <Route exact path={routes.home} render={() => <Redirect to={routes.notes} />} />
             <Route exact path={routes.notes} component={Notes} />
             <Route path={routes.note} component={DetailsPage} />

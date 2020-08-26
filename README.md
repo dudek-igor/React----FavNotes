@@ -11,7 +11,11 @@
 - storybook
 - react-router-dom
 - redux
+- redux-thunk
 - formik
 - moment.js
+- axios
+- node
+- mongoDB
 
 ### :atom: The atomic design methodology was used

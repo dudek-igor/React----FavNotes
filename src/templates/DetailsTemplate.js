@@ -59,7 +59,7 @@ const DetailsTemplate = ({ pageContext, title, created, content, articleUrl, twi
           {pageContext === 'twitters' && (
             <StyledAvatar src={`https://avatars.io/twitter/${twitterName}`} />
           )}
-          {pageContext === 'articles' && <Link href={articleUrl} />}
+          {pageContext === 'articles' && <Link to={`${articleUrl}`} />}
         </StyledInnerWrapper>
         <StyledParagraph bold>CREATED - {created}</StyledParagraph>
         <StyledParagraph>{content}</StyledParagraph>

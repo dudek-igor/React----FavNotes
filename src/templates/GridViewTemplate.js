@@ -61,7 +61,9 @@ const GridViewTemplate = ({ children, pageContext }) => {
             {pageContext}
           </StyledHeading>
           <Input search placeholder="Search" />
-          <StyledParagraph>6 {pageContext}</StyledParagraph>
+          <StyledParagraph>
+            {children.length ? children.length : null} {pageContext}
+          </StyledParagraph>
         </StyledPageHeader>
         <StyledGrid>{children}</StyledGrid>
         <NewItemBar setIsVisible={setIsVisible} isVisible={isVisible} />
