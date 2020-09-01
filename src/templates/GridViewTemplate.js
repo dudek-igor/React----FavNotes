@@ -62,7 +62,7 @@ const GridViewTemplate = ({ children, pageContext }) => {
           </StyledHeading>
           <Input search placeholder="Search" />
           <StyledParagraph>
-            {children.length ? children.length : null} {pageContext}
+            {children.length > 1 ? `${children.length} ${pageContext}` : null}
           </StyledParagraph>
         </StyledPageHeader>
         <StyledGrid>{children}</StyledGrid>
