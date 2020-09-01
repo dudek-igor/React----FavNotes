@@ -1,4 +1,4 @@
-import { constans, authenticate, fetch, item } from 'data/constans';
+import { constans, authenticate, fetch, addItems, removeItems } from 'data/constans';
 
 const initialState = {
   user: {
@@ -33,10 +33,18 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         [action.payload.itemType]: [...action.payload.data],
       };
-    case item.ADD_ITEM_SUCCES:
+    case addItems.ADD_ITEM_SUCCES:
       return {
         ...state,
         [action.payload.itemType]: [...state[action.payload.itemType], action.payload.data],
+      };
+    case removeItems.REMOVE_ITEM_SUCCES:
+      return {
+        ...state,
+        [action.payload.itemType]: [
+          // eslint-disable-next-line no-underscore-dangle
+          ...state[action.payload.itemType].filter((node) => node._id !== action.payload.id),
+        ],
       };
     default:
       return { ...state };

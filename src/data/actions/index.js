@@ -1,16 +1,21 @@
-import { constans, authenticate, register, fetch, item } from 'data/constans';
+import { authenticate, register, fetch, addItems, removeItems } from 'data/constans';
 import axios from 'axios';
 
-export const removeItem = (itemType, id) => ({
-  type: constans.REMOVE_ITEM,
-  payload: {
-    itemType,
-    id,
-  },
-});
+export const removeItem = (itemType, id) => (dispatch) => {
+  dispatch({ type: removeItems.REMOVE_ITEM_REQUEST });
+  return axios
+    .delete(`http://localhost:9000/api/note/${id}`)
+    .then(() => {
+      dispatch({ type: removeItems.REMOVE_ITEM_SUCCES, payload: { itemType, id } });
+    })
+    .catch((err) => {
+      dispatch({ type: removeItems.REMOVE_ITEM_FAILURE });
+      throw err;
+    });
+};
 
 export const addItem = (itemType, itemContent) => (dispatch, getState) => {
-  dispatch({ type: item.ADD_ITEM_REQUEST });
+  dispatch({ type: addItems.ADD_ITEM_REQUEST });
   return axios
     .post('http://localhost:9000/api/note', {
       userID: getState().user.userID,
@@ -19,7 +24,7 @@ export const addItem = (itemType, itemContent) => (dispatch, getState) => {
     })
     .then(({ data }) => {
       dispatch({
-        type: item.ADD_ITEM_SUCCES,
+        type: addItems.ADD_ITEM_SUCCES,
         payload: {
           itemType,
           data,
@@ -27,7 +32,7 @@ export const addItem = (itemType, itemContent) => (dispatch, getState) => {
       });
     })
     .catch((err) => {
-      dispatch({ type: item.ADD_ITEM_FAILURE });
+      dispatch({ type: addItems.ADD_ITEM_FAILURE });
       throw err;
     });
 };

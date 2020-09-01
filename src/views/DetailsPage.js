@@ -1,4 +1,3 @@
-/* eslint-disable no-useless-catch */
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import DetailsTemplate from 'templates/DetailsTemplate';
@@ -10,9 +9,14 @@ const DetailsPage = ({ activeItem, match }) => {
   const [item, setItem] = useState();
   useEffect(() => {
     if (!activeItem) {
-      axios.get(`http://localhost:9000/api/note/${match.params.id}`).then(({ data }) => {
-        setItem(data);
-      });
+      axios
+        .get(`http://localhost:9000/api/note/${match.params.id}`)
+        .then(({ data }) => {
+          setItem(data);
+        })
+        .catch((err) => {
+          throw err;
+        });
     } else {
       const [data] = activeItem;
       setItem(data);
