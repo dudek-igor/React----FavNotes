@@ -1,27 +1,27 @@
 {
   "files": {
-    "main.js": "/React----FavNotes/static/js/main.604aa69e.chunk.js",
-    "main.js.map": "/React----FavNotes/static/js/main.604aa69e.chunk.js.map",
-    "runtime-main.js": "/React----FavNotes/static/js/runtime-main.2c7e0784.js",
-    "runtime-main.js.map": "/React----FavNotes/static/js/runtime-main.2c7e0784.js.map",
-    "static/js/2.0e3d46c4.chunk.js": "/React----FavNotes/static/js/2.0e3d46c4.chunk.js",
-    "static/js/2.0e3d46c4.chunk.js.map": "/React----FavNotes/static/js/2.0e3d46c4.chunk.js.map",
-    "index.html": "/React----FavNotes/index.html",
-    "precache-manifest.00b8dceebc5e1664278e501ba2e09792.js": "/React----FavNotes/precache-manifest.00b8dceebc5e1664278e501ba2e09792.js",
-    "service-worker.js": "/React----FavNotes/service-worker.js",
-    "static/js/2.0e3d46c4.chunk.js.LICENSE.txt": "/React----FavNotes/static/js/2.0e3d46c4.chunk.js.LICENSE.txt",
-    "static/media/bulb.svg": "/React----FavNotes/static/media/bulb.af737b55.svg",
-    "static/media/link.svg": "/React----FavNotes/static/media/link.6fc1d8fe.svg",
-    "static/media/logo.svg": "/React----FavNotes/static/media/logo.93d4f3ba.svg",
-    "static/media/logout.svg": "/React----FavNotes/static/media/logout.0969c92b.svg",
-    "static/media/magnifier.svg": "/React----FavNotes/static/media/magnifier.a14461b8.svg",
-    "static/media/pen.svg": "/React----FavNotes/static/media/pen.84b70f8a.svg",
-    "static/media/plus.svg": "/React----FavNotes/static/media/plus.e43ce6c8.svg",
-    "static/media/twitter.svg": "/React----FavNotes/static/media/twitter.051af8ba.svg"
+    "main.js": "/React_FavNotes/static/js/main.bab5cd63.chunk.js",
+    "main.js.map": "/React_FavNotes/static/js/main.bab5cd63.chunk.js.map",
+    "runtime-main.js": "/React_FavNotes/static/js/runtime-main.49102581.js",
+    "runtime-main.js.map": "/React_FavNotes/static/js/runtime-main.49102581.js.map",
+    "static/js/2.a489ac28.chunk.js": "/React_FavNotes/static/js/2.a489ac28.chunk.js",
+    "static/js/2.a489ac28.chunk.js.map": "/React_FavNotes/static/js/2.a489ac28.chunk.js.map",
+    "index.html": "/React_FavNotes/index.html",
+    "precache-manifest.18b3698e0094f6c6418acfba0797325d.js": "/React_FavNotes/precache-manifest.18b3698e0094f6c6418acfba0797325d.js",
+    "service-worker.js": "/React_FavNotes/service-worker.js",
+    "static/js/2.a489ac28.chunk.js.LICENSE.txt": "/React_FavNotes/static/js/2.a489ac28.chunk.js.LICENSE.txt",
+    "static/media/bulb.svg": "/React_FavNotes/static/media/bulb.af737b55.svg",
+    "static/media/link.svg": "/React_FavNotes/static/media/link.6fc1d8fe.svg",
+    "static/media/logo.svg": "/React_FavNotes/static/media/logo.93d4f3ba.svg",
+    "static/media/logout.svg": "/React_FavNotes/static/media/logout.0969c92b.svg",
+    "static/media/magnifier.svg": "/React_FavNotes/static/media/magnifier.a14461b8.svg",
+    "static/media/pen.svg": "/React_FavNotes/static/media/pen.84b70f8a.svg",
+    "static/media/plus.svg": "/React_FavNotes/static/media/plus.e43ce6c8.svg",
+    "static/media/twitter.svg": "/React_FavNotes/static/media/twitter.051af8ba.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.2c7e0784.js",
-    "static/js/2.0e3d46c4.chunk.js",
-    "static/js/main.604aa69e.chunk.js"
+    "static/js/runtime-main.49102581.js",
+    "static/js/2.a489ac28.chunk.js",
+    "static/js/main.bab5cd63.chunk.js"
   ]
 }
